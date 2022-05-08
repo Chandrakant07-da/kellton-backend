@@ -1,21 +1,30 @@
 // API Routes
 
+
 const express = require('express')
 const router = express.Router()
-const Controller = require('../controller/controller')
+const Controller =require('../controller/controller')
+const AuthController = require('../controller/auth-collection')
 const cors = require('cors')
 
-// Default Route
-router.get('/',Controller.showIndex )
 
-// Add Products
-router.post('/add-products',Controller.addProducts)
+router.get('/',Controller.showIndex) 
 
-// Get All Category Products
-router.get('/get-products',cors(), Controller.showProducts )
+router.post('/add-products', Controller.addProducts)
 
-// Get Single Category Product
-router.get('get-category/:id',Controller.getCategoryItems)
+router.get('/get-products',cors(), Controller.showProducts)
+
+router.get('/get-category/:id', Controller.getCategoryItems)
+
+router.put('/update-category/:id', Controller.updateCategory)
+
+router.delete('/delete-category/:id' ,Controller.deleteCategory)
+
+// login authentication
+
+router.post('/register', AuthController.signUp)
+
+router.post('/login', AuthController.signIn)
 
 // Client => Postman
     // Default:

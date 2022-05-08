@@ -1,34 +1,29 @@
 // Import Express
-const express = require('express')
-const mongoose = require('mongoose')
-const apiroute = require('./routes/api_route')
-const cors = require('cors')
+const express = require("express");
+const mongoose = require("mongoose");
+const apiroute = require("./routes/api_route");
+const cors = require("cors");
+const dotenv = require("dotenv");
+// Initialize the application
+const app = express();
 
-// Intialize the Application
-const app = express()
+// setup server port
+const port = 8080;
+app.use(express.json(), cors());
 
-// Setup Server Port
-const port = 8080
-app.use(express.json()) // Set Content Type to JSON
+// send message for your localhost
+app.use("/api/users", apiroute);
 
-// Send Message for your localhost
-app.use('/', apiroute)
-app.use(cors())
+dotenv.config();
 
+mongoose
+  .connect(process.env.DB_CONNECT, { useNewUrlParser: true })
+  .then(() => {
+    console.log("Database Connected");
+  })
+  .catch((err) => console.log(err));
 
-
-const url = "mongodb+srv://chandra:Chandra1998#@cluster0.xtbl1.mongodb.net/Kellton-Ecommerce?retryWrites=true&w=majority"
-
-mongoose.connect(url,{useNewUrlParser:true})
-.then(() => {
-    console.log('Database Connected')
-}).catch(err => console.log(err))
-
-
-
-
-// Launch the Ecommerce Backend App
+// Launch the ecommerce backend app
 app.listen(port, () => {
-    console.log(`Running the Ecommerce Backend on Port:  
-    "http://localhost:${port}/ `)
-})
+  console.log(`running app on port: 'http://localhost:${port}/`);
+});
