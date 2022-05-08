@@ -26,6 +26,4 @@ const authSchema =new mongoose.Schema({
             max: 255
         }
 })
-
-
-    module.exports = mongoose.model('authenticate-data',authSchema)
+module.exports = mongoose.model('authenticate-data',authSchema)

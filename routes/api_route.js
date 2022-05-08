@@ -26,6 +26,7 @@ router.post('/register', AuthController.signUp)
 
 router.post('/login', AuthController.signIn)
 
+
 // Client => Postman
     // Default:
     // Request => http://locahost:8080/ 
