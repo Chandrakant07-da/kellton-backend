@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const apiroute = require("./routes/api_route");
 const cors = require("cors");
 const dotenv = require("dotenv");
+
 // Initialize the application
 const app = express();
 
@@ -25,6 +26,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // Launch the ecommerce backend app
+
 app.listen(port, () => {
   console.log(`running app on port: 'http://localhost:${port}/`);
 });

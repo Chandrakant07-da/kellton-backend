@@ -33,6 +33,7 @@ exports.addProducts = (req,res) =>{
             res.send(err)
         })
     }
+    
     exports.updateCategory = (req,res) =>{
         ProductsModel.findById(req.params.id , (err,catagory)=>{
             if(err)

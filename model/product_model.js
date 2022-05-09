@@ -18,4 +18,6 @@ const postSchema =new mongoose.Schema({
             required:true
         }
 })
+
+
     module.exports = mongoose.model('shop_data',postSchema)

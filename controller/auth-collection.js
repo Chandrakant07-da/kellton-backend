@@ -29,7 +29,6 @@ exports.signUp = async (req,res) =>{
     }else{
         res.send("Password not matching")
     }
-
     try {
 
         const registrationSchema = Joi.object({
